@@ -1,0 +1,32 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Formulario Estudios</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="assets/css/estiloformularios.css">
+</head>
+<body> 
+    <form method="POST" >
+        <h1>Formulario De Estudios</h1>
+
+        Nombre del estudio realizado:<input type="text" name="nombreestudio" placeholder="Nombre del estudio realizado" >
+
+        Laboratorio:<input type="text" name="laboratorio" placeholder="Laboratorio" >
+
+        quimico realizado:<input type="text" name="quimicorealizado" placeholder="Quimico realizado" >
+
+        Fecha del estudio realizado:<input type="text" name="fechadelestudio" placeholder="Fecha del estudio realizado" >
+
+        <input type="submit" name="Guardar">
+       
+    </form>
+    <?php
+    include("php/registro_estudios.php");
+    ?>
+</body>
+</html>
+
+
