@@ -1,0 +1,160 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 27-06-2022 a las 05:49:23
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.1.6
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `login_registro_receta`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `formenfermedad`
+--
+
+CREATE TABLE `formenfermedad` (
+  `id` int(20) NOT NULL,
+  `nombre_paciente` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
+  `nombre_enfermedad` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
+  `nombre_medicamento` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
+  `tiempo_diagnosticado` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
+  `direccion` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
+  `email` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
+  `telefono` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
+  `fecha_reg` varchar(15) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `formenfermedad`
+--
+
+INSERT INTO `formenfermedad` (`id`, `nombre_paciente`, `nombre_enfermedad`, `nombre_medicamento`, `tiempo_diagnosticado`, `direccion`, `email`, `telefono`, `fecha_reg`) VALUES
+(1, 'Erick Azael Reyes Perez', '  sin Enfermedades', 'paracetamol', ' 2 dias', '   puerto madero sin numero', ' intonen@14.com', '   12457 ', ' 24/03/22'),
+(2, 'fdsfsdf', '  dsfdsfds', 'fdsf', ' dsfdsf', '   dfdsf', ' dfsfdfdsf', '   dsfdfdsf ', ' 24/03/22'),
+(3, 'fd', '  fdsfd', 'sfdsfd', ' sfdsf', '   dsfds', ' fdsf', '   dsf ', ' 27/03/22'),
+(4, 'fdsf', '  dsfsd', 'fdf', ' dsfds', '   fsdf', ' dsfsdf', '   dsfdf ', ' 28/03/22'),
+(5, 'eeee', '  eeee', 'eee', ' ee', '   eee', ' ee', '   ee ', ' 28/03/22'),
+(6, 'rer', '  erer', 'ere', ' re', '   rer', ' ere', '   r ', ' 28/05/22');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `formsintomas`
+--
+
+CREATE TABLE `formsintomas` (
+  `id` int(15) NOT NULL,
+  `nombrecompleto` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
+  `curp` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
+  `edad` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `tiempomalestar` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
+  `lugarmolestia` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
+  `direccion` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
+  `fecha_reg` varchar(15) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `formsintomas`
+--
+
+INSERT INTO `formsintomas` (`id`, `nombrecompleto`, `curp`, `edad`, `tiempomalestar`, `lugarmolestia`, `direccion`, `fecha_reg`) VALUES
+(1, ' fdf', '  fdfdf', ' dfdfd', '  fdfdf ', '  dfdfd', '   sfd', ' 27/03/22 '),
+(2, ' fsdfds', '  fdsf', ' dsfds', '  fdsfd ', '  fdsfdsf', '   dfsdfdsf', ' 28/03/22 '),
+(3, ' sfdsf', '  dsfrtrtyr', ' ytyy', '  yyy ', '  yyyy', '   yyy', ' 28/03/22 '),
+(4, ' efe', '  eeee', ' eeee', '  eee ', '  eee', '   ee', ' 28/03/22 ');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `nombre_completo` varchar(70) COLLATE utf8_spanish_ci NOT NULL,
+  `correo` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `usuario` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `contrasena` varchar(270) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nombre_completo`, `correo`, `usuario`, `contrasena`) VALUES
+(3, 'erick', 'fefefe@gmail.com', 'erick2', '1234'),
+(4, 'laura llaven Rojo Perez', 'intento@gmail.com', 'intento1', '1245'),
+(5, 'laura llaven Rojo Perez', 'intento2@gmail.com', 'intento2', '1245'),
+(6, 'laura llaven Rojo Perez', 'intento2@gmail.com', 'intento2', '1245'),
+(7, 'laura llaven Rojo Perez ', 'intento2@gmail.com', 'intento2', '123'),
+(8, 'laura llaven Rojo Perez', 'intento2@gmail.com', 'intento2', '123'),
+(9, 'yoo', 'nose@gmail.com', 'nose', '123'),
+(10, 'Citlali Gomez Giron', 'CitlaliGironGomez@gmail.com', 'CitlaliGomez', 'minions03100218'),
+(11, 'dennis jaret re', 'dr9400597@gmail.com', 'monte', 'zombiesla1314'),
+(13, '', '', '', ''),
+(14, 'erick', 'rererer', 'erick1', '1234'),
+(15, 'gfg', 'grtgt', 'rgrtg', 'rtgrtgtr');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `formenfermedad`
+--
+ALTER TABLE `formenfermedad`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `formsintomas`
+--
+ALTER TABLE `formsintomas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `formenfermedad`
+--
+ALTER TABLE `formenfermedad`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `formsintomas`
+--
+ALTER TABLE `formsintomas`
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
