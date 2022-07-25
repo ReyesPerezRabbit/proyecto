@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-06-2022 a las 05:49:23
+-- Tiempo de generación: 25-07-2022 a las 05:13:22
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -20,6 +20,32 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `login_registro_receta`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `doctores`
+--
+
+CREATE TABLE `doctores` (
+  `id` int(15) NOT NULL,
+  `nombre_doctor` varchar(150) NOT NULL,
+  `sexo` varchar(50) NOT NULL,
+  `domicilio` varchar(250) NOT NULL,
+  `telefono` int(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `enfermedades`
+--
+
+CREATE TABLE `enfermedades` (
+  `id_enfer` int(50) NOT NULL,
+  `tiempo_diagnosticado` varchar(250) NOT NULL,
+  `id_usuario` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -49,7 +75,13 @@ INSERT INTO `formenfermedad` (`id`, `nombre_paciente`, `nombre_enfermedad`, `nom
 (3, 'fd', '  fdsfd', 'sfdsfd', ' sfdsf', '   dsfds', ' fdsf', '   dsf ', ' 27/03/22'),
 (4, 'fdsf', '  dsfsd', 'fdf', ' dsfds', '   fsdf', ' dsfsdf', '   dsfdf ', ' 28/03/22'),
 (5, 'eeee', '  eeee', 'eee', ' ee', '   eee', ' ee', '   ee ', ' 28/03/22'),
-(6, 'rer', '  erer', 'ere', ' re', '   rer', ' ere', '   r ', ' 28/05/22');
+(6, 'rer', '  erer', 'ere', ' re', '   rer', ' ere', '   r ', ' 28/05/22'),
+(7, 'nvjknfvnfvffff', '  fvdfvffv', 'fvfvfv', ' fvfvfdf', '   fvfvfvdf', ' 203416@UPTAPCHULA.EDU.MX', '   993888383 ', ' 07/07/22'),
+(8, 'regggge', '  rgreg', 'rgerg', ' gregr', '   grgre', ' gregrge', '   gergreg ', ' 19/07/22'),
+(9, 'd', '  d', 'dd', ' d', '   d', ' d', '   d ', ' 19/07/22'),
+(10, 'Saade Aldebarán Tapia Martínez', '  Alergías', 'Loratadina', ' 14 años', '   Av Rincon MZA 3 LY4 Col El Rinconcito', ' diosdelaguerra.satm@gmail.com', '   9622199232 ', ' 24/07/22'),
+(11, 'Saade Aldebarán Tapia Martínez', '  Covid-19', 'loratadimna, paracetamos wjdnjenjencjncjdncjd', ' siempre', '   Av Rincon MZA 3 LY4 Col El Rinconcito', ' diosdelaguerra.satm@gmail.com', '   9622199232 ', ' 25/07/22'),
+(12, 'Saade Aldebarán Tapia Martínez', '  Covid-19', 'loratadimna, paracetamos wjdnjenjencjncjdncjd', ' siempre', '   Av Rincon MZA 3 LY4 Col El Rinconcito', ' diosdelaguerra.satm@gmail.com', '   9622199232 ', ' 25/07/22');
 
 -- --------------------------------------------------------
 
@@ -62,7 +94,7 @@ CREATE TABLE `formsintomas` (
   `nombrecompleto` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
   `curp` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
   `edad` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `tiempomalestar` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
+  `tipo_malestar` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
   `lugarmolestia` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
   `direccion` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
   `fecha_reg` varchar(15) COLLATE utf8_spanish_ci NOT NULL
@@ -72,11 +104,89 @@ CREATE TABLE `formsintomas` (
 -- Volcado de datos para la tabla `formsintomas`
 --
 
-INSERT INTO `formsintomas` (`id`, `nombrecompleto`, `curp`, `edad`, `tiempomalestar`, `lugarmolestia`, `direccion`, `fecha_reg`) VALUES
+INSERT INTO `formsintomas` (`id`, `nombrecompleto`, `curp`, `edad`, `tipo_malestar`, `lugarmolestia`, `direccion`, `fecha_reg`) VALUES
 (1, ' fdf', '  fdfdf', ' dfdfd', '  fdfdf ', '  dfdfd', '   sfd', ' 27/03/22 '),
 (2, ' fsdfds', '  fdsf', ' dsfds', '  fdsfd ', '  fdsfdsf', '   dfsdfdsf', ' 28/03/22 '),
 (3, ' sfdsf', '  dsfrtrtyr', ' ytyy', '  yyy ', '  yyyy', '   yyy', ' 28/03/22 '),
-(4, ' efe', '  eeee', ' eeee', '  eee ', '  eee', '   ee', ' 28/03/22 ');
+(4, ' efe', '  eeee', ' eeee', '  eee ', '  eee', '   ee', ' 28/03/22 '),
+(5, ' Saade Aldebarán Tapia Martínez', '  TAMS020901HCSPRDA4', ' 19 años', 'la nariz\r\n', '  en la nariz', '   Av Rincon MZA 3 LY4 Col El Rinconcito', ' 25/07/22 '),
+(6, ' Saade Aldebarán Tapia Martínez', '  TAMS020901HCSPRDA4', ' 19 años', '   ', '  en la nariz', '   Av Rincon MZA 3 LY4 Col El Rinconcito', ' 25/07/22 ');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `medicamento_enfer`
+--
+
+CREATE TABLE `medicamento_enfer` (
+  `id` int(30) NOT NULL,
+  `nom_medicamento` int(250) NOT NULL,
+  `formula` int(250) NOT NULL,
+  `dosis_adulto` int(150) NOT NULL,
+  `dosis_kids` int(150) NOT NULL,
+  `precio` int(150) NOT NULL,
+  `id_enfer` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `medicamento_sintomas`
+--
+
+CREATE TABLE `medicamento_sintomas` (
+  `id` int(50) NOT NULL,
+  `nom_medicamento` int(250) NOT NULL,
+  `formula` int(250) NOT NULL,
+  `dosis_adulto` int(150) NOT NULL,
+  `dosis_kids` int(150) NOT NULL,
+  `precio` int(150) NOT NULL,
+  `id_sintomas` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `sintomas`
+--
+
+CREATE TABLE `sintomas` (
+  `id_sintomas` int(11) NOT NULL,
+  `molestias` varchar(250) NOT NULL,
+  `id_usuario` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `testreceta`
+--
+
+CREATE TABLE `testreceta` (
+  `id_Enfermo` int(11) NOT NULL,
+  `nombre_Enfermo` varchar(100) NOT NULL,
+  `sexo` varchar(100) NOT NULL,
+  `edad` int(11) NOT NULL,
+  `enfermedad` varchar(100) NOT NULL,
+  `n_Medicamento` int(11) NOT NULL,
+  `medicina` varchar(100) NOT NULL,
+  `mg/ml` varchar(100) NOT NULL,
+  `horas` int(11) NOT NULL,
+  `dias` int(11) NOT NULL,
+  `administracion` varchar(100) NOT NULL,
+  `nombre_Doctor` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `testreceta`
+--
+
+INSERT INTO `testreceta` (`id_Enfermo`, `nombre_Enfermo`, `sexo`, `edad`, `enfermedad`, `n_Medicamento`, `medicina`, `mg/ml`, `horas`, `dias`, `administracion`, `nombre_Doctor`) VALUES
+(1, 'Alba Tapia Martínez', 'Femenino', 56, 'Hipertension', 1, 'Ambroxol', '150 ml', 6, 7, 'Oral', 'Saade Aldebarán Tapia Martínez'),
+(1, 'Alba Tapia Martínez', 'Femenino', 56, 'Hipertension', 2, 'paracetamol', '500 mg', 12, 10, 'Oral', 'Saade Aldebarán Tapia Martínez'),
+(2, 'Saade Aldebarán tapia Martínez', 'Masculino', 19, 'Todo', 3, 'Loratadina', '500 mg', 12, 10, 'Oral', 'Alba Tapia Martínez'),
+(1, '', '', 0, '', 4, 'loratadina', '500 mg', 8, 7, 'oral', ''),
+(1, '', '', 0, '', 5, 'hibuprofeno', '500 mg', 12, 5, 'Oral', 'Saade Aldebarán Tapia Martínez\r\n');
 
 -- --------------------------------------------------------
 
@@ -85,7 +195,7 @@ INSERT INTO `formsintomas` (`id`, `nombrecompleto`, `curp`, `edad`, `tiempomales
 --
 
 CREATE TABLE `usuarios` (
-  `id` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
   `nombre_completo` varchar(70) COLLATE utf8_spanish_ci NOT NULL,
   `correo` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `usuario` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
@@ -96,7 +206,7 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre_completo`, `correo`, `usuario`, `contrasena`) VALUES
+INSERT INTO `usuarios` (`id_usuario`, `nombre_completo`, `correo`, `usuario`, `contrasena`) VALUES
 (3, 'erick', 'fefefe@gmail.com', 'erick2', '1234'),
 (4, 'laura llaven Rojo Perez', 'intento@gmail.com', 'intento1', '1245'),
 (5, 'laura llaven Rojo Perez', 'intento2@gmail.com', 'intento2', '1245'),
@@ -108,11 +218,23 @@ INSERT INTO `usuarios` (`id`, `nombre_completo`, `correo`, `usuario`, `contrasen
 (11, 'dennis jaret re', 'dr9400597@gmail.com', 'monte', 'zombiesla1314'),
 (13, '', '', '', ''),
 (14, 'erick', 'rererer', 'erick1', '1234'),
-(15, 'gfg', 'grtgt', 'rgrtg', 'rtgrtgtr');
+(15, 'Citlali Gomez Giron', 'ejemplo@gmail.com', 'citlali0310', '1234');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `doctores`
+--
+ALTER TABLE `doctores`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `enfermedades`
+--
+ALTER TABLE `enfermedades`
+  ADD PRIMARY KEY (`id_enfer`);
 
 --
 -- Indices de la tabla `formenfermedad`
@@ -127,32 +249,84 @@ ALTER TABLE `formsintomas`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `medicamento_enfer`
+--
+ALTER TABLE `medicamento_enfer`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `medicamento_sintomas`
+--
+ALTER TABLE `medicamento_sintomas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `testreceta`
+--
+ALTER TABLE `testreceta`
+  ADD PRIMARY KEY (`n_Medicamento`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_usuario`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
+-- AUTO_INCREMENT de la tabla `doctores`
+--
+ALTER TABLE `doctores`
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `enfermedades`
+--
+ALTER TABLE `enfermedades`
+  MODIFY `id_enfer` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `formenfermedad`
 --
 ALTER TABLE `formenfermedad`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `formsintomas`
 --
 ALTER TABLE `formsintomas`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `medicamento_enfer`
+--
+ALTER TABLE `medicamento_enfer`
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `medicamento_sintomas`
+--
+ALTER TABLE `medicamento_sintomas`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `enfermedades`
+--
+ALTER TABLE `enfermedades`
+  ADD CONSTRAINT `enfermedades_ibfk_1` FOREIGN KEY (`id_enfer`) REFERENCES `usuarios` (`id_usuario`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
